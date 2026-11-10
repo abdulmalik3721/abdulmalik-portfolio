@@ -1,267 +1,570 @@
+/* =========================================================
+   ABDUL MALIK — REAL-TIME THREE.JS HOLOGRAM
 
-/* ==========================================
-   ABDUL MALIK - THREE.JS HOLOGRAM
-========================================== */
+   Features:
+   1. 3D energy sphere
+   2. Rotating wireframe shell
+   3. Three orbital rings
+   4. Floating satellites
+   5. 650 floating particles
+   6. Cyan and purple lighting
 
-import * as THREE from
-    "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js";
+========================================================= */
+
+import * as THREE from "three";
 
 
-/* 1. FIND THE HOLOGRAM CONTAINER */
+/* =========================================================
+   1. FIND HOLOGRAM CONTAINER
+========================================================= */
 
-const container = document.getElementById("hologram3d");
+const host = document.getElementById("hologram3d");
 
-const prefersReducedMotion = window.matchMedia(
+const reduceMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
 ).matches;
 
 
-if (container) {
+if (host) {
 
     try {
 
-        /* 2. CREATE THE SCENE */
+        /* =====================================================
+           2. CREATE SCENE
+        ===================================================== */
 
         const scene = new THREE.Scene();
 
+
+        /* =====================================================
+           3. CREATE CAMERA
+        ===================================================== */
+
         const camera = new THREE.PerspectiveCamera(
-            45,
+            38,
             1,
             0.1,
             100
         );
 
-        camera.position.z = 5;
+        camera.position.set(0, 0, 7.2);
 
 
-        /* 3. CREATE THE RENDERER */
+        /* =====================================================
+           4. CREATE WEBGL RENDERER
+        ===================================================== */
 
         const renderer = new THREE.WebGLRenderer({
+
             alpha: true,
-            antialias: true
+
+            antialias: true,
+
+            powerPreference: "high-performance"
+
         });
 
         renderer.setPixelRatio(
-            Math.min(window.devicePixelRatio, 2)
+            Math.min(window.devicePixelRatio || 1, 2)
+        );
+
+        renderer.setSize(
+            host.clientWidth || 280,
+            host.clientHeight || 270
         );
 
         renderer.setClearColor(0x000000, 0);
 
-        container.appendChild(renderer.domElement);
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+        host.appendChild(renderer.domElement);
 
 
-        /* 4. MAIN GLASS SPHERE */
+        /* =====================================================
+           5. MAIN HOLOGRAM GROUP
+        ===================================================== */
 
-        const sphereGeometry = new THREE.SphereGeometry(
-            1,
-            64,
-            64
+        const hologram = new THREE.Group();
+
+        scene.add(hologram);
+
+
+        /* =====================================================
+           6. ENERGY CORE
+        ===================================================== */
+
+        const coreGeometry = new THREE.IcosahedronGeometry(
+            1.05,
+            4
         );
 
-        const sphereMaterial = new THREE.MeshPhysicalMaterial({
-            color: 0x8b5cf6,
-            metalness: 0.35,
-            roughness: 0.12,
+        const coreMaterial = new THREE.MeshPhysicalMaterial({
+
+            color: 0x4adfff,
+
+            emissive: 0x087aa8,
+
+            emissiveIntensity: 1.15,
+
+            metalness: 0.38,
+
+            roughness: 0.18,
+
+            transmission: 0.12,
+
             transparent: true,
-            opacity: 0.32,
-            side: THREE.DoubleSide
+
+            opacity: 0.92,
+
+            wireframe: false
+
         });
 
-        const sphere = new THREE.Mesh(
-            sphereGeometry,
-            sphereMaterial
+        const core = new THREE.Mesh(
+            coreGeometry,
+            coreMaterial
         );
 
-        scene.add(sphere);
+        hologram.add(core);
 
 
-        /* 5. CYAN WIREFRAME */
+        /* =====================================================
+           7. WIREFRAME SHELL
+        ===================================================== */
 
-        const wireGeometry = new THREE.SphereGeometry(
-            1.04,
-            28,
-            20
+        const wireGeometry = new THREE.IcosahedronGeometry(
+            1.18,
+            2
         );
 
         const wireMaterial = new THREE.MeshBasicMaterial({
-            color: 0x42d9ff,
+
+            color: 0x9defff,
+
             wireframe: true,
+
             transparent: true,
+
             opacity: 0.38
+
         });
 
-        const wireSphere = new THREE.Mesh(
+        const wireShell = new THREE.Mesh(
             wireGeometry,
             wireMaterial
         );
 
-        scene.add(wireSphere);
+        hologram.add(wireShell);
 
 
-        /* 6. ORBITAL RINGS */
+        /* =====================================================
+           8. ORBITAL RINGS
+        ===================================================== */
 
-        const ring1 = new THREE.Mesh(
-            new THREE.TorusGeometry(1.35, 0.012, 8, 120),
+        const ringMaterials = [
+
             new THREE.MeshBasicMaterial({
-                color: 0x42d9ff,
+                color: 0x4adfff,
                 transparent: true,
                 opacity: 0.9
-            })
-        );
+            }),
 
-        const ring2 = new THREE.Mesh(
-            new THREE.TorusGeometry(1.5, 0.009, 8, 120),
             new THREE.MeshBasicMaterial({
-                color: 0xa78bfa,
+                color: 0xb49aff,
                 transparent: true,
-                opacity: 0.85
+                opacity: 0.78
+            }),
+
+            new THREE.MeshBasicMaterial({
+                color: 0x70bfff,
+                transparent: true,
+                opacity: 0.65
             })
+
+        ];
+
+
+        const rings = [];
+
+
+        const ringSettings = [
+
+            [1.75, 0.025, 0.15, 0.38],
+
+            [1.52, 0.02, 1.12, -0.35],
+
+            [1.92, 0.018, 0.72, 1.05]
+
+        ];
+
+
+        ringSettings.forEach(
+            ([radius, tube, rotX, rotY], index) => {
+
+                const ring = new THREE.Mesh(
+
+                    new THREE.TorusGeometry(
+                        radius,
+                        tube,
+                        8,
+                        150
+                    ),
+
+                    ringMaterials[index]
+
+                );
+
+
+                ring.rotation.set(
+                    rotX,
+                    rotY,
+                    0.25 * index
+                );
+
+
+                hologram.add(ring);
+
+                rings.push(ring);
+
+            }
         );
 
-        ring1.rotation.x = 1.1;
-        ring1.rotation.y = 0.4;
 
-        ring2.rotation.x = 0.5;
-        ring2.rotation.y = 1.2;
+        /* =====================================================
+           9. LUMINOUS SATELLITES
+        ===================================================== */
 
-        scene.add(ring1, ring2);
+        const satellites = [];
 
 
-        /* 7. FLOATING PARTICLES */
+        for (let i = 0; i < 5; i += 1) {
 
-        const particleCount = 350;
+            const satellite = new THREE.Mesh(
 
-        const positions = new Float32Array(
+                new THREE.SphereGeometry(
+                    i % 2 === 0 ? 0.055 : 0.035,
+                    16,
+                    16
+                ),
+
+                new THREE.MeshBasicMaterial({
+
+                    color:
+                        i % 2 === 0
+                            ? 0x8ff4ff
+                            : 0xc4a8ff
+
+                })
+
+            );
+
+
+            hologram.add(satellite);
+
+            satellites.push(satellite);
+
+        }
+
+
+        /* =====================================================
+           10. FLOATING PARTICLES
+        ===================================================== */
+
+        const particleCount = 650;
+
+        const particlePositions = new Float32Array(
             particleCount * 3
         );
 
-        for (let i = 0; i < particleCount; i++) {
 
-            const index = i * 3;
+        for (let i = 0; i < particleCount; i += 1) {
 
-            positions[index] =
-                (Math.random() - 0.5) * 4;
+            const radius = 1.8 + Math.random() * 1.15;
 
-            positions[index + 1] =
-                (Math.random() - 0.5) * 4;
+            const theta = Math.random() * Math.PI * 2;
 
-            positions[index + 2] =
-                (Math.random() - 0.5) * 2;
+            const phi = Math.acos(
+                2 * Math.random() - 1
+            );
+
+
+            particlePositions[i * 3] =
+                radius * Math.sin(phi) * Math.cos(theta);
+
+
+            particlePositions[i * 3 + 1] =
+                radius * Math.sin(phi) * Math.sin(theta);
+
+
+            particlePositions[i * 3 + 2] =
+                radius * Math.cos(phi);
 
         }
+
 
         const particleGeometry = new THREE.BufferGeometry();
 
         particleGeometry.setAttribute(
+
             "position",
-            new THREE.BufferAttribute(positions, 3)
+
+            new THREE.BufferAttribute(
+                particlePositions,
+                3
+            )
+
         );
 
+
         const particleMaterial = new THREE.PointsMaterial({
-            color: 0x9bdfff,
+
+            color: 0x75dfff,
+
             size: 0.018,
+
             transparent: true,
-            opacity: 0.8,
+
+            opacity: 0.72,
+
             sizeAttenuation: true
+
         });
+
 
         const particles = new THREE.Points(
             particleGeometry,
             particleMaterial
         );
 
-        scene.add(particles);
+        hologram.add(particles);
 
 
-        /* 8. LIGHTING */
+        /* =====================================================
+           11. LIGHTING
+        ===================================================== */
 
-        const purpleLight = new THREE.PointLight(
-            0x8b5cf6,
-            3,
-            10
+        scene.add(
+            new THREE.AmbientLight(
+                0x9bcfff,
+                1.2
+            )
         );
 
-        purpleLight.position.set(2, 2, 3);
 
         const cyanLight = new THREE.PointLight(
-            0x42d9ff,
-            2,
-            10
+            0x38dfff,
+            18,
+            12
         );
 
-        cyanLight.position.set(-2, -1, 3);
+        cyanLight.position.set(
+            2.5,
+            2.5,
+            3.5
+        );
 
-        scene.add(purpleLight, cyanLight);
-
-
-        /* 9. RESPONSIVE SIZE */
-
-        function resizeScene() {
-
-            const width = container.clientWidth;
-            const height = container.clientHeight;
-
-            if (!width || !height) return;
-
-            camera.aspect = width / height;
-            camera.updateProjectionMatrix();
-
-            renderer.setSize(width, height);
-
-        }
-
-        const resizeObserver = new ResizeObserver(resizeScene);
-
-        resizeObserver.observe(container);
-
-        resizeScene();
+        scene.add(cyanLight);
 
 
-        /* 10. ANIMATION */
+        const violetLight = new THREE.PointLight(
+            0x9b68ff,
+            14,
+            12
+        );
+
+        violetLight.position.set(
+            -2.5,
+            -1.5,
+            2
+        );
+
+        scene.add(violetLight);
+
+
+        /* =====================================================
+           12. RESIZE HANDLING
+        ===================================================== */
 
         const clock = new THREE.Clock();
 
-        function animate() {
+
+        function resizeRenderer() {
+
+            const width = Math.max(
+                host.clientWidth,
+                1
+            );
+
+            const height = Math.max(
+                host.clientHeight,
+                1
+            );
+
+
+            camera.aspect = width / height;
+
+            camera.updateProjectionMatrix();
+
+
+            renderer.setSize(
+                width,
+                height,
+                false
+            );
+
+        }
+
+
+        const resizeObserver = new ResizeObserver(
+            resizeRenderer
+        );
+
+        resizeObserver.observe(host);
+
+        resizeRenderer();
+
+
+        /* =====================================================
+           13. ANIMATION LOOP
+        ===================================================== */
+
+        function renderFrame() {
 
             const elapsed = clock.getElapsedTime();
 
-            sphere.rotation.y = elapsed * 0.25;
 
-            sphere.rotation.x =
-                Math.sin(elapsed * 0.3) * 0.15;
+            // Main hologram rotation
+            hologram.rotation.y = elapsed * 0.22;
 
-            wireSphere.rotation.y = -elapsed * 0.18;
-            wireSphere.rotation.x = elapsed * 0.12;
+            hologram.rotation.x =
+                Math.sin(elapsed * 0.35) * 0.12;
 
-            ring1.rotation.z = elapsed * 0.35;
-            ring2.rotation.z = -elapsed * 0.25;
 
-            particles.rotation.y = elapsed * 0.035;
+            // Energy core rotation
+            core.rotation.y = elapsed * 0.32;
 
-            particles.rotation.x =
-                Math.sin(elapsed * 0.2) * 0.08;
+            core.rotation.x = elapsed * 0.18;
 
-            renderer.render(scene, camera);
+
+            // Wireframe movement
+            wireShell.rotation.y = -elapsed * 0.16;
+
+            wireShell.rotation.x = elapsed * 0.1;
+
+
+            // Orbital ring movement
+            rings[0].rotation.z = elapsed * 0.34;
+
+            rings[1].rotation.z = -elapsed * 0.26;
+
+            rings[2].rotation.y = elapsed * 0.2;
+
+
+            // Floating particles
+            particles.rotation.y = -elapsed * 0.035;
+
+
+            // Satellites moving around the core
+            satellites.forEach(
+                (satellite, index) => {
+
+                    const angle =
+                        elapsed * (0.55 + index * 0.07) +
+                        (index * Math.PI * 2) / satellites.length;
+
+
+                    const radius =
+                        1.72 + (index % 2) * 0.18;
+
+
+                    satellite.position.set(
+
+                        Math.cos(angle) * radius,
+
+                        Math.sin(angle * 1.1) * 0.42,
+
+                        Math.sin(angle) * radius * 0.52
+
+                    );
+
+                }
+            );
+
+
+            renderer.render(
+                scene,
+                camera
+            );
 
         }
 
 
-        /* 11. START */
+        /* =====================================================
+           14. START ANIMATION
+        ===================================================== */
 
-        if (prefersReducedMotion) {
+        if (reduceMotion) {
 
-            renderer.render(scene, camera);
+            renderFrame();
 
         } else {
 
-            renderer.setAnimationLoop(animate);
+            renderer.setAnimationLoop(renderFrame);
 
         }
+
+
+        /* =====================================================
+           15. HIDE CSS FALLBACK AFTER WEBGL STARTS
+        ===================================================== */
+
+        const fallback = host.querySelector(
+            ".holo-fallback"
+        );
+
+        if (fallback) {
+
+            fallback.style.display = "none";
+
+        }
+
+
+        /* =====================================================
+           16. CLEANUP
+        ===================================================== */
+
+        window.addEventListener(
+            "beforeunload",
+            () => {
+
+                resizeObserver.disconnect();
+
+                renderer.setAnimationLoop(null);
+
+                renderer.dispose();
+
+                coreGeometry.dispose();
+                coreMaterial.dispose();
+
+                wireGeometry.dispose();
+                wireMaterial.dispose();
+
+                ringMaterials.forEach(
+                    (material) => material.dispose()
+                );
+
+                particleGeometry.dispose();
+                particleMaterial.dispose();
+
+            },
+            { once: true }
+        );
+
 
     } catch (error) {
 
         console.error(
-            "Unable to initialize the Three.js hologram:",
+            "Three.js hologram could not start. The CSS fallback remains visible.",
             error
         );
 

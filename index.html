@@ -7,214 +7,1229 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-        content="Abdul Malik - Software Developer and Computer Engineer exploring Java backend development, Artificial Intelligence, Machine Learning and Data Science.">
+        content="Abdul Malik — Software Developer and Computer Engineer exploring AI, Machine Learning, Data Science, IoT and backend development.">
 
     <meta name="author" content="Abdul Malik">
-    <meta name="theme-color" content="#080b14">
+    <meta name="theme-color" content="#070b16">
 
     <title>Abdul Malik | Software Developer & Computer Engineer</title>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Main JavaScript -->
     <script src="script.js" defer></script>
 
-    <!-- Three.js hologram -->
+    <!-- Three.js module import -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"
+        }
+    }
+    </script>
+
     <script type="module" src="three-scene.js"></script>
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
+    <div class="page-noise" aria-hidden="true"></div>
+
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
     <header class="navbar">
 
-        <a href="#home" class="logo">
-            Abdul<span>Malik.</span>
+        <a class="brand" href="#home">
+            AbdulMalik<span>.</span>
         </a>
 
-        <nav class="nav-links" aria-label="Main navigation">
-            <a href="#home">Home</a>
+        <nav class="nav-links">
+            <a href="#home" class="active">Home</a>
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
             <a href="#coursework">Coursework</a>
-            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#certifications">Certifications</a>
             <a href="#contact">Contact</a>
         </nav>
 
-        <a href="#contact" class="nav-button">
-            Let's Connect
+        <a class="nav-cta" href="#contact">
+            Let's connect <span>↗</span>
         </a>
+
+        <button class="menu-toggle"
+            aria-label="Toggle navigation"
+            aria-expanded="false">
+
+            <span></span>
+            <span></span>
+
+        </button>
 
     </header>
 
 
     <main>
 
-        <!-- CINEMATIC HERO -->
-        <section id="home" class="hero-scene">
+        <!-- =====================================================
+             HERO SECTION
+        ====================================================== -->
 
-            <div class="scene-glow glow-purple"></div>
-            <div class="scene-glow glow-blue"></div>
+        <section class="hero-scene" id="home">
+
+            <div class="ambient ambient-one"></div>
+            <div class="ambient ambient-two"></div>
+            <div class="hero-grid"></div>
+
+            <div class="hero-topline">
+                <span class="status-dot"></span>
+                DIGITAL WORKSPACE / 2026
+
+                <span class="topline-right">
+                    PORTFOLIO — 001
+                </span>
+            </div>
 
             <div class="workspace">
 
-                <!-- Decorative plant -->
-                <div class="plant plant-left">
-                    <div class="plant-stem"></div>
-                    <div class="plant-leaf leaf-1"></div>
-                    <div class="plant-leaf leaf-2"></div>
-                    <div class="plant-leaf leaf-3"></div>
-                    <div class="plant-leaf leaf-4"></div>
+                <!-- FLOATING LEFT CARD -->
+
+                <div class="floating-tag tag-left">
+
+                    <span class="tag-icon">⌘</span>
+
+                    <span>
+                        <b>BUILDING</b>
+                        <small>Thoughtful software</small>
+                    </span>
+
                 </div>
 
-                <!-- Desk -->
-                <div class="desk"></div>
 
-                <!-- Monitor -->
-                <div class="monitor-scene" id="monitorScene">
+                <!-- FLOATING RIGHT CARD -->
 
-                    <div class="monitor">
+                <div class="floating-tag tag-right">
 
-                        <div class="monitor-frame">
+                    <span class="tag-icon purple">✳</span>
 
-                            <div class="monitor-screen">
+                    <span>
+                        <b>EXPLORING</b>
+                        <small>AI · ML · Data Science</small>
+                    </span>
 
-                                <!-- Background code -->
-                                <div class="screen-code" aria-hidden="true">
-                                    <span>01</span> public class Developer {<br>
-                                    <span>02</span> &nbsp; String name = "Abdul Malik";<br>
-                                    <span>03</span> &nbsp; String passion = "Innovation";<br>
-                                    <span>04</span> &nbsp; void create() {<br>
-                                    <span>05</span> &nbsp;&nbsp; buildFuture();<br>
-                                    <span>06</span> &nbsp; }<br>
-                                    <span>07</span> }
+                </div>
+
+
+                <!-- 3D MONITOR -->
+
+                <div class="monitor-scene">
+
+                    <div class="monitor-shell">
+
+                        <div class="monitor-camera"></div>
+
+                        <div class="monitor-screen">
+
+                            <div class="screen-topbar">
+
+                                <div class="window-dots">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
                                 </div>
 
-                                <!-- Main introduction -->
-                                <div class="screen-content">
+                                <span>
+                                    abdulmalik.dev
+                                    <b>● LIVE PORTFOLIO</b>
+                                </span>
 
-                                    <p class="screen-eyebrow">
-                                        HELLO, I'M ABDUL MALIK
+                                <span class="topbar-menu">···</span>
+
+                            </div>
+
+
+                            <div class="screen-layout">
+
+                                <!-- HERO TEXT -->
+
+                                <div class="screen-copy">
+
+                                    <p class="eyebrow">
+                                        <span></span>
+                                        HELLO, WORLD. I'M ABDUL MALIK
                                     </p>
 
                                     <h1>
-                                        Software Developer
-                                        <span class="title-ampersand">&</span>
-                                        Computer Engineer
+                                        Software<br>
+
+                                        <span class="cyan-word">
+                                            Developer
+                                        </span>
+
+                                        <em>&</em><br>
+
+                                        <span class="purple-word">
+                                            Computer Engineer
+                                        </span>
                                     </h1>
 
-                                    <p class="screen-description">
-                                        Engineering software, exploring Artificial
+                                    <p class="hero-description">
+                                        I build software, solve engineering problems,
+                                        and explore the possibilities of Artificial
                                         Intelligence, Machine Learning and Data Science.
-                                        Building ideas into meaningful digital solutions.
                                     </p>
 
-                                    <div class="screen-actions">
-                                        <a href="#projects" class="screen-button">
-                                            Explore My Portfolio ↗
+                                    <div class="hero-actions">
+
+                                        <a class="primary-button" href="#about">
+                                            Explore my world
+                                            <span>↗</span>
                                         </a>
+
+                                        <a class="text-button" href="#contact">
+                                            Get in touch
+                                        </a>
+
                                     </div>
 
-                                    <div class="screen-identity">
-                                        <span class="identity-developer">
+                                    <div class="identity-line">
+
+                                        <span class="identity-cyan">
                                             SOFTWARE DEVELOPER
                                         </span>
 
-                                        <span class="identity-engineer">
+                                        <span class="identity-separator">/</span>
+
+                                        <span class="identity-purple">
                                             COMPUTER ENGINEER
                                         </span>
+
                                     </div>
 
                                 </div>
 
-                                <!-- Three.js hologram -->
-                                <div
-                                    class="hologram3d"
-                                    id="hologram3d"
-                                    aria-hidden="true">
+
+                                <!-- THREE.JS HOLOGRAM -->
+
+                                <div class="hologram-panel">
+
+                                    <div class="holo-label">
+                                        <span class="status-dot"></span>
+                                        HOLOGRAPHIC CORE
+
+                                        <small>3D / REAL-TIME</small>
+                                    </div>
+
+                                    <div class="hologram3d"
+                                        id="hologram3d"
+                                        aria-label="Animated 3D holographic sphere">
+
+                                        <div class="holo-fallback">
+                                            <div class="fallback-orbit"></div>
+                                            <div class="fallback-core"></div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="holo-caption">
+                                        NEURAL SYSTEM
+                                        <span>● ONLINE</span>
+                                    </div>
+
                                 </div>
 
-                                <!-- Glass reflection -->
-                                <div class="screen-reflection"></div>
+                            </div>
+
+
+                            <div class="screen-bottom">
+
+                                <span>JAVA · PYTHON · SPRING BOOT</span>
+
+                                <span>
+                                    DESIGNING / BUILDING / LEARNING
+                                </span>
 
                             </div>
-                        </div>
 
-                        <!-- Monitor stand -->
-                        <div class="monitor-neck"></div>
-                        <div class="monitor-base"></div>
+                            <div class="screen-scanline"></div>
+
+                        </div>
 
                     </div>
 
-                    <!-- Floating information panel -->
-                    <div class="floating-info">
-                        <span>✦ ABDUL MALIK</span>
-                        <p>Innovate. Code. Engineer.</p>
+
+                    <!-- MONITOR STAND -->
+
+                    <div class="monitor-chin"></div>
+                    <div class="monitor-neck"></div>
+                    <div class="monitor-foot"></div>
+                    <div class="monitor-shadow"></div>
+
+                </div>
+
+
+                <!-- DESK -->
+
+                <div class="desk">
+
+                    <div class="desk-edge"></div>
+
+                    <div class="desk-leg desk-leg-left"></div>
+                    <div class="desk-leg desk-leg-right"></div>
+
+                    <div class="desk-light"></div>
+
+                    <div class="desk-device">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+
+                    <div class="desk-cup">
+                        <span></span>
                     </div>
 
                 </div>
 
-                <!-- Desk decoration -->
-                <div class="desk-object"></div>
+                <div class="floor-glow"></div>
 
             </div>
 
-            <!-- Hero footer -->
-            <div class="scene-footer">
-                <span>WELCOME TO MY DIGITAL WORLD</span>
-                <a href="#about">SCROLL TO EXPLORE ↓</a>
+
+            <div class="hero-bottomline">
+
+                <span>SCROLL TO EXPLORE</span>
+
+                <a href="#about">↓</a>
+
+                <span class="bottom-right">
+                    BASED IN QATAR · OPEN TO OPPORTUNITIES
+                </span>
+
             </div>
 
         </section>
 
 
-        <!-- ABOUT -->
-        <section id="about">
-            <h2>About Me</h2>
+        <!-- =====================================================
+             ABOUT SECTION
+        ====================================================== -->
+
+        <section class="content-section about-section" id="about">
+
+            <div class="section-index">01 / ABOUT</div>
+
+            <div class="section-heading">
+
+                <p class="eyebrow">A LITTLE INTRODUCTION</p>
+
+                <h2>
+                    Engineering ideas<br>
+                    into
+                    <span class="gradient-text">
+                        real experiences.
+                    </span>
+                </h2>
+
+            </div>
+
+
+            <div class="about-grid">
+
+                <div class="about-mark">
+                    AM<span>.</span>
+
+                    <small>
+                        COMPUTER SCIENCE<br>
+                        & ENGINEERING
+                    </small>
+                </div>
+
+
+                <div class="about-copy">
+
+                    <p class="lead">
+                        I'm a Computer Science and Engineering graduate
+                        with an interest in building reliable software
+                        and understanding the systems behind it.
+                    </p>
+
+                    <p>
+                        My interests span Java backend development,
+                        APIs, databases, Linux, and emerging fields
+                        such as Artificial Intelligence, Machine
+                        Learning and Data Science. I enjoy learning
+                        by building, experimenting, and improving
+                        one step at a time.
+                    </p>
+
+                    <div class="about-facts">
+
+                        <div>
+                            <strong>2025</strong>
+                            <span>Graduate</span>
+                        </div>
+
+                        <div>
+                            <strong>B.E.</strong>
+                            <span>Computer Science</span>
+                        </div>
+
+                        <div>
+                            <strong>∞</strong>
+                            <span>Always learning</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </section>
 
 
-        <!-- SKILLS -->
-        <section id="skills">
-            <h2>Technical Skills</h2>
+        <!-- =====================================================
+             SKILLS SECTION
+        ====================================================== -->
+
+        <section class="content-section" id="skills">
+
+            <div class="section-index">02 / TOOLKIT</div>
+
+            <div class="section-heading">
+
+                <p class="eyebrow">WHAT I WORK WITH</p>
+
+                <h2>
+                    Skills &
+                    <span class="gradient-text">
+                        Technologies.
+                    </span>
+                </h2>
+
+                <p class="section-intro">
+                    A growing technical toolkit across software development,
+                    computer engineering, artificial intelligence,
+                    machine learning, data science and IoT.
+                </p>
+
+            </div>
+
+
+            <div class="skill-grid">
+
+
+                <!-- PROGRAMMING LANGUAGES -->
+
+                <article class="skill-card">
+
+                    <span class="card-number">01</span>
+
+                    <div class="skill-symbol">⌘</div>
+
+                    <h3>Programming Languages</h3>
+
+                    <div class="skill-tags">
+                        <span>Java</span>
+                        <span>Python</span>
+                        <span>C++</span>
+                        <span>SQL</span>
+                    </div>
+
+                    <small>
+                        Programming fundamentals, object-oriented programming
+                        and problem solving.
+                    </small>
+
+                </article>
+
+
+                <!-- BACKEND DEVELOPMENT -->
+
+                <article class="skill-card">
+
+                    <span class="card-number">02</span>
+
+                    <div class="skill-symbol">⌬</div>
+
+                    <h3>Backend Development</h3>
+
+                    <div class="skill-tags">
+                        <span>Spring Boot</span>
+                        <span>Hibernate</span>
+                        <span>REST APIs</span>
+                        <span>Maven</span>
+                    </div>
+
+                    <small>
+                        Server-side application development and API design.
+                    </small>
+
+                </article>
+
+
+                <!-- DATABASES -->
+
+                <article class="skill-card">
+
+                    <span class="card-number">03</span>
+
+                    <div class="skill-symbol">◫</div>
+
+                    <h3>Databases</h3>
+
+                    <div class="skill-tags">
+                        <span>PostgreSQL</span>
+                        <span>MySQL</span>
+                        <span>SQL</span>
+                        <span>DBMS</span>
+                    </div>
+
+                    <small>
+                        Relational database concepts and data management.
+                    </small>
+
+                </article>
+
+
+                <!-- AI / ML / DATA SCIENCE -->
+
+                <article class="skill-card">
+
+                    <span class="card-number">04</span>
+
+                    <div class="skill-symbol">✳</div>
+
+                    <h3>AI, ML & Data Science</h3>
+
+                    <div class="skill-tags">
+                        <span>Artificial Intelligence</span>
+                        <span>Machine Learning</span>
+                        <span>Deep Learning</span>
+                        <span>Computer Vision</span>
+                        <span>NumPy</span>
+                        <span>Pandas</span>
+                        <span>Matplotlib</span>
+                        <span>OpenCV</span>
+                    </div>
+
+                    <small>
+                        Academic foundations and technical learning in AI,
+                        machine learning and data analysis.
+                    </small>
+
+                </article>
+
+
+                <!-- COMPUTER SCIENCE -->
+
+                <article class="skill-card">
+
+                    <span class="card-number">05</span>
+
+                    <div class="skill-symbol">⌁</div>
+
+                    <h3>Computer Science</h3>
+
+                    <div class="skill-tags">
+                        <span>Data Structures & Algorithms</span>
+                        <span>OOP</span>
+                        <span>Operating Systems</span>
+                        <span>Computer Networks</span>
+                        <span>Cloud Computing</span>
+                        <span>Distributed Systems</span>
+                        <span>Software Engineering</span>
+                    </div>
+
+                    <small>
+                        Core computer science and engineering fundamentals.
+                    </small>
+
+                </article>
+
+
+                <!-- IOT AND HARDWARE -->
+
+                <article class="skill-card">
+
+                    <span class="card-number">06</span>
+
+                    <div class="skill-symbol">◎</div>
+
+                    <h3>IoT & Computer Engineering</h3>
+
+                    <div class="skill-tags">
+                        <span>Internet of Things</span>
+                        <span>Arduino</span>
+                        <span>ESP32</span>
+                        <span>Sensor Networks</span>
+                        <span>Connected Devices</span>
+                    </div>
+
+                    <small>
+                        IoT architecture, connected systems and sensor-based
+                        technology concepts.
+                    </small>
+
+                </article>
+
+
+                <!-- TOOLS -->
+
+                <article class="skill-card">
+
+                    <span class="card-number">07</span>
+
+                    <div class="skill-symbol">⌘</div>
+
+                    <h3>Tools & Development</h3>
+
+                    <div class="skill-tags">
+                        <span>Git</span>
+                        <span>GitHub</span>
+                        <span>Linux</span>
+                        <span>Docker</span>
+                        <span>VS Code</span>
+                    </div>
+
+                    <small>
+                        Version control, development tools and environments.
+                    </small>
+
+                </article>
+
+
+                <!-- CLOUD AND INFRASTRUCTURE -->
+
+                <article class="skill-card">
+
+                    <span class="card-number">08</span>
+
+                    <div class="skill-symbol">☁</div>
+
+                    <h3>Cloud & Infrastructure</h3>
+
+                    <div class="skill-tags">
+                        <span>AWS Basics</span>
+                        <span>Linux</span>
+                        <span>Networking</span>
+                        <span>Cloud Fundamentals</span>
+                    </div>
+
+                    <small>
+                        Cloud computing concepts, infrastructure and networking.
+                    </small>
+
+                </article>
+
+
+            </div>
+
         </section>
 
 
-        <!-- COURSEWORK -->
-        <section id="coursework">
-            <h2>Academic Coursework</h2>
+        <!-- =====================================================
+             COURSEWORK SECTION
+        ====================================================== -->
+
+        <section class="content-section coursework-section" id="coursework">
+
+            <div class="section-index">03 / ACADEMICS</div>
+
+            <div class="section-heading">
+
+                <p class="eyebrow">FOUNDATIONS THAT SHAPE ME</p>
+
+                <h2>
+                    Relevant
+                    <span class="gradient-text">coursework.</span>
+                </h2>
+
+                <p class="section-intro">
+                    Selected areas from my Computer Science and Engineering
+                    studies. This list can be refined against the official transcript.
+                </p>
+
+            </div>
+
+
+            <div class="course-list">
+
+                <div>
+                    <span>01</span>
+                    <b>Artificial Intelligence & Machine Learning</b>
+                    <small>AI · ML · Deep Learning concepts</small>
+                </div>
+
+                <div>
+                    <span>02</span>
+                    <b>Computer Vision</b>
+                    <small>Image processing · Visual computing</small>
+                </div>
+
+                <div>
+                    <span>03</span>
+                    <b>Data Structures & Algorithms</b>
+                    <small>Problem solving · Algorithmic thinking</small>
+                </div>
+
+                <div>
+                    <span>04</span>
+                    <b>Database Management Systems</b>
+                    <small>SQL · Relational databases</small>
+                </div>
+
+                <div>
+                    <span>05</span>
+                    <b>Operating Systems & Computer Networks</b>
+                    <small>Systems · Networking fundamentals</small>
+                </div>
+
+                <div>
+                    <span>06</span>
+                    <b>Numerical Methods & Optimization using Python</b>
+                    <small>Numerical computation · Optimization</small>
+                </div>
+
+                <div>
+                    <span>07</span>
+                    <b>Cloud Computing & Distributed Systems</b>
+                    <small>Cloud concepts · Distributed architecture</small>
+                </div>
+
+                <div>
+                    <span>08</span>
+                    <b>Software Engineering</b>
+                    <small>Software design · Development lifecycle</small>
+                </div>
+
+            </div>
+
         </section>
 
 
-        <!-- PROJECTS -->
-        <section id="projects">
-            <h2>Featured Projects</h2>
+        <!-- =====================================================
+             EXPERIENCE SECTION
+        ====================================================== -->
+
+        <section class="content-section experience-section" id="experience">
+
+            <div class="section-index">04 / EXPERIENCE</div>
+
+            <div class="section-heading">
+
+                <p class="eyebrow">LEARNING BY DOING</p>
+
+                <h2>
+                    Experience &
+                    <span class="gradient-text">growth.</span>
+                </h2>
+
+            </div>
+
+
+            <div class="timeline">
+
+
+                <!-- ZUMMIT INFOLABS -->
+
+                <article class="timeline-item">
+
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-meta">
+                        FEB 2025 — JUL 2025
+                    </div>
+
+                    <div>
+
+                        <h3>Full Stack Developer</h3>
+
+                        <p class="company">
+                            Zummit Infolabs
+                        </p>
+
+                        <p>
+                            Worked on full-stack development learning
+                            and implementation, using development tools
+                            and AI-assisted workflows.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- TECHBAIRN -->
+
+                <article class="timeline-item">
+
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-meta">
+                        TRAINING
+                    </div>
+
+                    <div>
+
+                        <h3>Full Stack Development Intern / Trainee</h3>
+
+                        <p class="company">
+                            TechBairn
+                        </p>
+
+                        <p>
+                            Gained exposure to full-stack development
+                            concepts and practical software development workflows.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- IOT ACADEMIC LEARNING EXPERIENCE -->
+
+            <div class="experience-card">
+
+                <div class="experience-icon">🌐</div>
+
+                <div class="experience-content">
+
+                    <span class="experience-type">
+                        ACADEMIC LEARNING / NPTEL
+                    </span>
+
+                    <h3>IoT Learning Experience</h3>
+
+                    <h4>Introduction to Internet of Things</h4>
+
+                    <p>
+                        Successfully completed the NPTEL certification
+                        offered by IIT Kharagpur, securing 79% marks
+                        and earning a Silver Medal.
+                    </p>
+
+                    <p>
+                        Gained foundational knowledge of IoT architecture,
+                        connected devices, sensor networks, communication
+                        protocols and real-world applications of IoT
+                        across different domains.
+                    </p>
+
+                    <div class="experience-tags">
+                        <span>Internet of Things</span>
+                        <span>IoT Architecture</span>
+                        <span>Connected Devices</span>
+                        <span>Sensor Networks</span>
+                        <span>Communication Protocols</span>
+                    </div>
+
+                    <p class="achievement">
+                        <strong>79% Score | Silver Medal</strong>
+                    </p>
+
+                    <a class="certificate-link"
+                       href="https://drive.google.com/file/d/1TdemvzcuT6BT1FduhWRzffiW-cN9-Rvy/view"
+                       target="_blank"
+                       rel="noopener noreferrer">
+
+                        View NPTEL Certificate ↗
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <p class="honest-note">
+                This portfolio is being built progressively.
+                Project case studies will be added as they are completed and verified.
+            </p>
+
         </section>
 
 
-        <!-- CONTACT -->
-        <section id="contact">
-            <h2>Let's Connect</h2>
+        <!-- =====================================================
+             CERTIFICATIONS SECTION
+        ====================================================== -->
+
+        <section class="content-section certifications-section"
+            id="certifications">
+
+            <div class="section-index">05 / CERTIFICATIONS</div>
+
+            <div class="section-heading">
+
+                <p class="eyebrow">CONTINUOUS LEARNING</p>
+
+                <h2>
+                    Certifications &
+                    <span class="gradient-text">Achievements.</span>
+                </h2>
+
+                <p class="section-intro">
+                    Professional certifications and technical learning
+                    achievements across IoT, Artificial Intelligence,
+                    Python, Cybersecurity and Software Development.
+                </p>
+
+            </div>
+
+
+            <div class="certifications-grid">
+
+
+                <!-- 01: NPTEL IOT -->
+
+                <article class="certification-card">
+
+                    <span class="certificate-number">01 / NPTEL</span>
+
+                    <div class="skill-symbol">◎</div>
+
+                    <h3>Introduction to Internet of Things</h3>
+
+                    <p class="certificate-issuer">
+                        Indian Institute of Technology Kharagpur
+                    </p>
+
+                    <p class="certificate-date">
+                        26 October 2023
+                    </p>
+
+                    <p class="certificate-description">
+                        Successfully completed the NPTEL certification
+                        in Introduction to Internet of Things, securing
+                        79% marks and earning a Silver Medal.
+                        Gained foundational knowledge of IoT architecture,
+                        connected devices, sensor networks, communication
+                        protocols and real-world IoT applications.
+                    </p>
+
+                    <span class="certificate-score">
+                        79% · Silver Medal
+                    </span>
+
+                    <a class="certificate-link"
+                       href="https://drive.google.com/file/d/1TdemvzcuT6BT1FduhWRzffiW-cN9-Rvy/view"
+                       target="_blank"
+                       rel="noopener noreferrer">
+
+                        View Certificate ↗
+
+                    </a>
+
+                </article>
+
+
+                <!-- 02: IBM AI PYTHON FLASK -->
+
+                <article class="certification-card">
+
+                    <span class="certificate-number">
+                        02 / ARTIFICIAL INTELLIGENCE
+                    </span>
+
+                    <div class="skill-symbol">✳</div>
+
+                    <h3>Developing AI Applications with Python and Flask</h3>
+
+                    <p class="certificate-issuer">
+                        IBM · Coursera
+                    </p>
+
+                    <p class="certificate-date">
+                        29 March 2024
+                    </p>
+
+                    <p class="certificate-description">
+                        Completed hands-on training in developing
+                        AI-powered applications using Python and Flask.
+                        Learned to integrate AI capabilities into web
+                        applications, build backend services and create
+                        interactive solutions through practical implementation.
+                    </p>
+
+                    <a class="certificate-link"
+                       href="https://drive.google.com/file/d/1B7yGt5y355O5izPXwvJxsM0bpyH_xELb/view?usp=sharing"
+                       target="_blank"
+                       rel="noopener noreferrer">
+
+                        View Certificate ↗
+
+                    </a>
+
+                </article>
+
+
+                <!-- 03: GOOGLE CYBERSECURITY -->
+
+                <article class="certification-card">
+
+                    <span class="certificate-number">
+                        03 / CYBERSECURITY
+                    </span>
+
+                    <div class="skill-symbol">⌑</div>
+
+                    <h3>Automate Cybersecurity Tasks with Python</h3>
+
+                    <p class="certificate-issuer">
+                        Google · Coursera
+                    </p>
+
+                    <p class="certificate-date">
+                        29 March 2024
+                    </p>
+
+                    <p class="certificate-description">
+                        Applied Python scripting, file handling and
+                        algorithmic concepts to automate routine
+                        cybersecurity tasks, analyze security-related
+                        data and improve operational efficiency.
+                    </p>
+
+                    <a class="certificate-link"
+                       href="https://drive.google.com/file/d/1USIdlKkTBBSg-ORvkcF-IQjQXxTEKHh4/view?usp=sharing"
+                       target="_blank"
+                       rel="noopener noreferrer">
+
+                        View Certificate ↗
+
+                    </a>
+
+                </article>
+
+
+                <!-- 04: IBM GENERATIVE AI -->
+
+                <article class="certification-card">
+
+                    <span class="certificate-number">
+                        04 / GENERATIVE AI
+                    </span>
+
+                    <div class="skill-symbol">✧</div>
+
+                    <h3>Generative AI: Introduction and Applications</h3>
+
+                    <p class="certificate-issuer">
+                        IBM · Coursera
+                    </p>
+
+                    <p class="certificate-date">
+                        13 February 2025
+                    </p>
+
+                    <p class="certificate-description">
+                        Gained knowledge of generative AI concepts,
+                        large language models and their practical
+                        applications in content creation, problem-solving
+                        and automation.
+                    </p>
+
+                    <a class="certificate-link"
+                       href="https://drive.google.com/file/d/16mylFfYaJBMAwt3uUiJ0RyCKramip6oh/view?usp=sharing"
+                       target="_blank"
+                       rel="noopener noreferrer">
+
+                        View Certificate ↗
+
+                    </a>
+
+                </article>
+
+
+                <!-- 05: GOOGLE GIT AND GITHUB -->
+
+                <article class="certification-card">
+
+                    <span class="certificate-number">
+                        05 / SOFTWARE DEVELOPMENT
+                    </span>
+
+                    <div class="skill-symbol">⌘</div>
+
+                    <h3>Introduction to Git and GitHub</h3>
+
+                    <p class="certificate-issuer">
+                        Google
+                    </p>
+
+                    <p class="certificate-date">
+                        24 January 2025
+                    </p>
+
+                    <p class="certificate-description">
+                        Learned Git fundamentals, version control,
+                        repository management, branching and collaboration
+                        workflows using GitHub to manage and track
+                        software development projects.
+                    </p>
+
+                    <a class="certificate-link"
+                       href="https://drive.google.com/file/d/1JP6cVoPpheB98llJloPKYAWlds5QOl8Q/view?usp=sharing"
+                       target="_blank"
+                       rel="noopener noreferrer">
+
+                        View Certificate ↗
+
+                    </a>
+
+                </article>
+
+
+                <!-- 06: DELOITTE DATA ANALYTICS -->
+
+                <article class="certification-card">
+
+                    <span class="certificate-number">
+                        06 / DATA ANALYTICS
+                    </span>
+
+                    <div class="skill-symbol">◫</div>
+
+                    <h3>Deloitte Data Analytics Job Simulation</h3>
+
+                    <p class="certificate-issuer">
+                        Deloitte
+                    </p>
+
+                    <p class="certificate-description">
+                        Completed a job simulation focused on data
+                        analytics and practical exposure to
+                        analytical problem-solving.
+                    </p>
+
+                    <p class="certificate-date">
+                        <a class="certificate-link"
+                       href="https://drive.google.com/file/d/1l4sbIxMxl1blBgeKg7CiMQdyOIFitQyw/view?usp=sharing"
+                       target="_blank"
+                       rel="noopener noreferrer">
+
+                        View Certificate ↗
+
+                    </a>
+                        
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CONTACT SECTION
+        ====================================================== -->
+
+        <section class="content-section contact-section" id="contact">
+
+            <div class="section-index">06 / CONTACT</div>
+
+            <div class="contact-panel">
+
+                <p class="eyebrow">
+                    HAVE AN OPPORTUNITY OR AN IDEA?
+                </p>
+
+                <h2>
+                    Let's build<br>
+                    <span class="gradient-text">
+                        something meaningful.
+                    </span>
+                </h2>
+
+                <p>
+                    I'm open to connecting about software development,
+                    engineering opportunities, research interests
+                    and learning collaborations.
+                </p>
+
+                <a class="primary-button"
+                   href="mailto:malik.kasgan@gmail.com">
+
+                    malik.kasgan@gmail.com
+                    <span>↗</span>
+
+                </a>
+
+
+                <!-- SOCIAL LINKS -->
+
+                <div class="social-links">
+
+                    <a href="https://github.com/abdulmalik3721"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="GitHub">
+
+                        <svg viewBox="0 0 24 24"
+                             aria-hidden="true">
+
+                            <path fill="currentColor"
+                                d="M12 .297a12 12 0 0 0-3.794 23.385c.6.111.82-.261.82-.577v-2.234c-3.338.726-4.043-1.416-4.043-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.304-5.466-1.333-5.466-5.931 0-1.31.468-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.323 3.301 1.23a11.5 11.5 0 0 1 6.01 0c2.292-1.553 3.298-1.23 3.298-1.23.655 1.652.243 2.873.12 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.805 5.624-5.475 5.921.43.372.823 1.103.823 2.222v3.293c0 .319.216.694.825.576A12.003 12.003 0 0 0 12 .297"/>
+
+                        </svg>
+
+                    </a>
+
+
+                    <a href="https://linkedin.com/in/abdulmalik3721/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="LinkedIn">
+
+                        <svg viewBox="0 0 24 24"
+                             aria-hidden="true">
+
+                            <path fill="currentColor"
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.35V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+
+                        </svg>
+
+                    </a>
+
+                </div>
+
+            </div>
+
         </section>
 
     </main>
 
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
 
-        <p>Designed and developed by Abdul Malik.</p>
+    <footer class="footer">
 
-        <p>© 2026 All Rights Reserved.</p>
+        <a class="brand" href="#home">
+            AM<span>.</span>
+        </a>
+
+        <p>
+            Designed & developed by Abdul Malik · © 2026
+        </p>
+
+        <a href="#home">
+            BACK TO TOP ↑
+        </a>
 
     </footer>
 
