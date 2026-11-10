@@ -2030,3 +2030,204 @@ button {
     }
 
 }
+
+.about-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image img {
+    width: 280px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 2px solid #38bdf8;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
+}
+
+/* ==========================================
+   ABOUT SECTION - PROFESSIONAL PROFILE PHOTO
+========================================== */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr;
+    align-items: center;
+    gap: 65px;
+}
+
+.about-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-frame {
+    width: 100%;
+    max-width: 330px;
+    height: 390px;
+    padding: 8px;
+    border: 1px solid rgba(56, 189, 248, 0.55);
+    border-radius: 24px;
+    background: linear-gradient(
+        145deg,
+        rgba(56, 189, 248, 0.15),
+        rgba(139, 92, 246, 0.12)
+    );
+    box-shadow: 0 0 35px rgba(56, 189, 248, 0.12);
+    overflow: hidden;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 18px;
+    transition: transform 0.4s ease;
+}
+
+.photo-frame:hover img {
+    transform: scale(1.04);
+}
+
+.photo-caption {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #38bdf8;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #38bdf8;
+    box-shadow: 0 0 10px #38bdf8;
+}
+
+/* Mobile responsive */
+
+@media (max-width: 768px) {
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .about-photo {
+        order: -1;
+    }
+
+    .photo-frame {
+        max-width: 270px;
+        height: 320px;
+    }
+
+}
+
+
+/* ==========================================
+   PREMIUM DOWNLOAD CV BUTTON
+========================================== */
+
+.about-actions {
+    margin-top: 32px;
+}
+
+.download-cv-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    min-width: 280px;
+
+    border: 1px solid rgba(56, 189, 248, 0.45);
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(56, 189, 248, 0.13),
+        rgba(139, 92, 246, 0.13)
+    );
+
+    color: #e2e8f0;
+    text-decoration: none;
+    transition: all 0.35s ease;
+    overflow: hidden;
+}
+
+.download-cv-btn:hover {
+    transform: translateY(-5px);
+    border-color: #38bdf8;
+
+    box-shadow:
+        0 8px 30px rgba(56, 189, 248, 0.18),
+        0 0 18px rgba(139, 92, 246, 0.12);
+
+    background: linear-gradient(
+        135deg,
+        rgba(56, 189, 248, 0.22),
+        rgba(139, 92, 246, 0.22)
+    );
+}
+
+.cv-icon {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(56, 189, 248, 0.13);
+    color: #38bdf8;
+    flex-shrink: 0;
+}
+
+.cv-button-text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.cv-button-text strong {
+    font-size: 14px;
+    font-weight: 700;
+    color: #f8fafc;
+    letter-spacing: 0.3px;
+}
+
+.cv-button-text small {
+    font-size: 10px;
+    color: #94a3b8;
+    letter-spacing: 0.3px;
+}
+
+.cv-arrow {
+    margin-left: auto;
+    font-size: 20px;
+    color: #38bdf8;
+    transition: transform 0.3s ease;
+}
+
+.download-cv-btn:hover .cv-arrow {
+    transform: translate(4px, -4px);
+}
+
+/* Mobile responsiveness */
+
+@media (max-width: 480px) {
+    .download-cv-btn {
+        min-width: 0;
+        width: 100%;
+        padding: 14px;
+    }
+}
