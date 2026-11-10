@@ -2231,3 +2231,34 @@ button {
         padding: 14px;
     }
 }
+
+
+/* AUTOMATION SKILL CARD HIGHLIGHT */
+
+.automation-skill-card {
+    border-color: rgba(56, 189, 248, 0.35);
+    background: linear-gradient(
+        145deg,
+        rgba(56, 189, 248, 0.07),
+        rgba(139, 92, 246, 0.07)
+    );
+}
+
+.automation-skill-card:hover {
+    border-color: #38bdf8;
+    box-shadow: 0 10px 35px rgba(56, 189, 248, 0.12);
+}
+
+/* AUTOMATION SECTION */
+
+.automation-section {
+    position: relative;
+}
+
+.automation-course-list > div {
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.automation-course-list > div:hover {
+    transform: translateX(6px);
+}
